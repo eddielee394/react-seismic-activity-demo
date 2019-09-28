@@ -1,4 +1,9 @@
-const MockAdapter = require("axios-mock-adapter");
-const axios = require("axios");
-const mock = new MockAdapter(axios, { delayResponse: 1 });
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+
+/**
+ * Instantiates a new MockAdapter instance
+ * @type {MockAdapter}
+ */
+const mock = new MockAdapter(axios);
 export default mock;
