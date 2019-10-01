@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Api } from "../../../utils";
 import _ from "lodash";
-import AppBar from "@material-ui/core/AppBar/AppBar";
+import { AppBar } from "@material-ui/core";
 import { Tab, Tabs } from "@material-ui/core";
 import { LocationChart, LocationTable } from "../Location";
 import { Loader } from "../UI";
+import { toast } from "react-toastify";
 
 const LocationContainer = () => {
   const [state, setState] = useState({
@@ -21,11 +22,21 @@ const LocationContainer = () => {
     setState({ ...state, isLoading: true });
 
     //fetch location data
-    Api.getLocations().then(
-      response =>
-        setState({ ...state, isLoading: false, locations: response.data }),
-      e => setState({ ...state, isLoading: false, locations: null, error: e })
-    );
+    Api.getLocations()
+      .then(response =>
+        //update the container state & disable loading
+        setState({ ...state, isLoading: false, locations: response.data })
+      )
+      .catch(e => {
+        //update the container state & trigger the error notification UI
+        setState({
+          ...state,
+          isLoading: true,
+          locations: null,
+          error: e.message
+        });
+        return toast.error(e.message, { autoClose: false });
+      });
   }, []);
 
   /**
@@ -57,7 +68,7 @@ const LocationContainer = () => {
   );
 
   return (
-    <div>
+    <div className="location-container">
       <AppBar position="static">
         <Tabs value={selectedTab} onChange={handleTabChange} centered>
           <Tab label="Table" />

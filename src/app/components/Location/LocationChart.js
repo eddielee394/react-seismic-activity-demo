@@ -34,7 +34,6 @@ const LocationChart = props => {
 
   return (
     <div className="pb-24 sm:p-16 h-256">
-      {console.log(data)}
       <FlexibleXYPlot>
         <VerticalGridLines />
         <HorizontalGridLines />
