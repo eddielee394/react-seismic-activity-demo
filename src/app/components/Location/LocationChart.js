@@ -10,15 +10,17 @@ import {
 } from "react-vis";
 
 const LocationChart = props => {
+  const [state, setState] = useState({ hoverValue: null });
+
   const { data } = props;
-  const [hoverValue1, setHoverValue1] = useState(null);
+  const { hoverValue } = state;
 
   /**
    * Resets hint value
    * @private
    */
   const _handleForgetValue = () => {
-    setHoverValue1(null);
+    setState({ hoverValue: null });
   };
 
   /**
@@ -27,11 +29,12 @@ const LocationChart = props => {
    * @private
    */
   const _handleRememberValue = value => {
-    setHoverValue1(value);
+    setState({ hoverValue: value });
   };
 
   return (
     <div className="pb-24 sm:p-16 h-256">
+      {console.log(data)}
       <FlexibleXYPlot>
         <VerticalGridLines />
         <HorizontalGridLines />
@@ -42,7 +45,7 @@ const LocationChart = props => {
           onValueMouseOut={_handleForgetValue}
           data={data}
         />
-        {hoverValue1 ? <Hint value={hoverValue1} /> : null}
+        {hoverValue ? <Hint value={hoverValue} /> : null}
       </FlexibleXYPlot>
     </div>
   );

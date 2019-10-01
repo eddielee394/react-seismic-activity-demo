@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Api } from "../../../utils";
 import _ from "lodash";
-import LocationTable from "./LocationTable";
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import { Tab, Tabs } from "@material-ui/core";
-import LocationChart from "./LocationChart";
-import { BeatLoader } from "react-spinners";
+import { LocationChart, LocationTable } from "../Location";
+import { Loader } from "../UI";
 
 const LocationContainer = () => {
-  const [locations, setLocations] = useState([]);
-  const [selectedTab, setSelectedTab] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [state, setState] = useState({
+    isLoading: false,
+    locations: null,
+    error: null,
+    selectedTab: 0
+  });
+
+  const { isLoading, locations, error, selectedTab } = state;
 
   useEffect(() => {
-    /**
-     * Fetches location data
-     * @type {Promise<void>}
-     */
-    Api.getLocations()
-      .then(response => {
-        return setLocations(response.data);
-      })
-      .then(res => setIsLoading(false));
+    //set loading
+    setState({ ...state, isLoading: true });
+
+    //fetch location data
+    Api.getLocations().then(
+      response =>
+        setState({ ...state, isLoading: false, locations: response.data }),
+      e => setState({ ...state, isLoading: false, locations: null, error: e })
+    );
   }, []);
 
   /**
@@ -30,7 +34,7 @@ const LocationContainer = () => {
    * @param value
    */
   const handleTabChange = (event, value) => {
-    setSelectedTab(value);
+    setState({ ...state, selectedTab: value });
   };
 
   /**
@@ -40,11 +44,7 @@ const LocationContainer = () => {
   const filterUniqueLocations = key => _.uniqBy(locations, key);
 
   const showContent = isLoading ? (
-    <div className="container flex flex-col flex-grow mx-auto px-8 sm:px-16 py-24">
-      <div className="flex justify-center align-middle my-128">
-        <BeatLoader color={"#123abc"} loading={isLoading} />
-      </div>
-    </div>
+    <Loader isLoading={isLoading} />
   ) : (
     <div className="container flex flex-col mx-auto px-8 sm:px-16 py-24">
       {selectedTab === 0 && (
