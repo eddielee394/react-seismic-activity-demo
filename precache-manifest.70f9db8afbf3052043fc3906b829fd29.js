@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b4eb4f832fa28bfb99a53eaa134006f1",
+    "revision": "6d27ae929e32ca8214f89c6ebb861d18",
     "url": "/react-seismic-activity-demo/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-seismic-activity-demo/static/css/2.4e72e2b1.chunk.css"
   },
   {
-    "revision": "d9997897b407329e3ba9",
+    "revision": "2f9d1fdaf719cd75cd10",
     "url": "/react-seismic-activity-demo/static/css/main.e859ec0d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-seismic-activity-demo/static/js/2.34666d4f.chunk.js"
   },
   {
-    "revision": "d9997897b407329e3ba9",
-    "url": "/react-seismic-activity-demo/static/js/main.f240ed8e.chunk.js"
+    "revision": "2f9d1fdaf719cd75cd10",
+    "url": "/react-seismic-activity-demo/static/js/main.c5a720be.chunk.js"
   },
   {
     "revision": "5210c84ddd77113f0a81",
