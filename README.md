@@ -5,6 +5,8 @@ A basic demo clientside application built on React 16.10. Includes:
 - Basic data display in a table format
 - Sample scatterplot chart
 
+**Demo**: https://eddielee394.github.io/react-seismic-activity-demo/
+
 ## Installation
 - clone repository
 - run `yarn install` to install dependencies
