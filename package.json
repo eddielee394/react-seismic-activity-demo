@@ -28,7 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "tailwind": "./node_modules/.bin/tailwind build ./src/assets/styles/tailwind.base.css -c ./src/utils/tailwind.js -o ./src/assets/styles/tailwind.css",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
