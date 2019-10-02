@@ -15,7 +15,7 @@ const LocationContainer = () => {
     selectedTab: 0
   });
 
-  const { isLoading, locations, error, selectedTab } = state;
+  const { isLoading, locations, selectedTab } = state;
 
   useEffect(() => {
     //set loading

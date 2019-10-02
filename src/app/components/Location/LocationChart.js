@@ -9,7 +9,7 @@ import {
   YAxis
 } from "react-vis";
 import { renameProp } from "../../../utils";
-import Paper from "@material-ui/core/Paper";
+import { Paper } from "@material-ui/core";
 
 const LocationChart = props => {
   const [state, setState] = useState({ hoverValue: null });
@@ -47,8 +47,8 @@ const LocationChart = props => {
   }
 
   return (
-    <div className="pb-24 sm:p-16 h-256">
-      <Paper>
+    <Paper>
+      <div className="pb-24 sm:p-16 h-256">
         <FlexibleXYPlot>
           <VerticalGridLines />
           <HorizontalGridLines />
@@ -63,8 +63,8 @@ const LocationChart = props => {
             <Hint value={customHintFormat(hoverValue, hintLabels)} />
           ) : null}
         </FlexibleXYPlot>
-      </Paper>
-    </div>
+      </div>
+    </Paper>
   );
 };
 
