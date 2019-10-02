@@ -21,7 +21,7 @@ const LocationTable = props => {
       label: "Y Coord"
     },
     {
-      name: "magnitude",
+      name: "size",
       label: "Magnitude"
     }
   ];
