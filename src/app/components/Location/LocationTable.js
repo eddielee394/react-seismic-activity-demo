@@ -25,10 +25,13 @@ const LocationTable = props => {
       label: "Magnitude"
     }
   ];
+  const options = {
+    responsive: "stacked"
+  };
 
   return (
     <div className="pb-24 sm:p-16">
-      <MUIDataTable data={data} columns={columns} />
+      <MUIDataTable data={data} columns={columns} options={options} />
     </div>
   );
 };
